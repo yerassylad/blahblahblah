@@ -1,12 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import store from "./app/store";
+import App from "./app/App";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+import "./assets/css/bootstrap.min.css";
+import "./assets/css/bootstrap-combined.no-icons.min.css";
+// import "./assets/css/font-awesome.min.css"; // нет файлов fonts/fontawesome-webfont.eot и т.д. Из-за этого установил "font-awesome": "^4.7.0". все работает как надо
+import "../node_modules/font-awesome/css/font-awesome.min.css";
+import "./assets/css/menu.css";
+import "./assets/css/fonts.css";
+import "./assets/css/style.css";
+import "./assets/css/media.css";
+
+const isLogged = () => {
+  var data = localStorage.getItem("isLogged");
+  return data;
+};
+document.body.style.padding = 0;
+document.body.style.margin = 0;
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App isLogged={() => isLogged()} />
+      {/* <LeftPanel /> */}
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+
 serviceWorker.unregister();
