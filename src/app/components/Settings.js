@@ -1,130 +1,32 @@
 import React, { Component } from "react";
 
+import loaderGIF from "../../assets/img/Loader.gif";
+import addressSVG from "../../assets/img/icon/Icon-adres.svg";
+import saveSVG from "../../assets/img/icon/save.svg";
+
+import TextEditor from "./TextEditor";
+
 class Settings extends Component {
   render() {
     return (
-      <div id="right-panel" className="right-panel clearfix">
-        <div className="col-md-12 col-sm-12 col-xs-12 menu-block mb-30 or-man">
-          <div className="col-md-2 block-tab">
-            <img
-              src="assets/img/logo_shield.png"
-              alt=""
-              className="img-responsive"
-            />
-          </div>
-          <div className="col-md-2 block-tab">
-            <div className="clock">
-              <img
-                src="assets/img/icon/icon7.svg"
-                alt=""
-                className="center-block"
-              />
-              <span>2</span>
-            </div>
-          </div>
-          <div className="col-md-8 col-sm-12 mb-none">
-            <div className="menu-2">
-              <ul>
-                <li>
-                  <a href="#">
-                    <span className="m-cirle">12</span>
-                    Очередь
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="menu_1">
-                    <div className="df">
-                      <span className="number">1</span> <span className="img" />
-                    </div>{" "}
-                    Авто в боксе{" "}
-                    <span className="ab_icon">
-                      <img src="assets/img/icon/icon-eye.svg" alt="" />
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="menu_1">
-                    <div className="df">
-                      <span className="number">2</span> <span className="img" />
-                    </div>{" "}
-                    Авто в боксе
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="menu_1">
-                    <div className="df">
-                      <span className="number gray">3</span>
-                      <span className="img" />
-                    </div>{" "}
-                    Свободен{" "}
-                    <span className="ab_icon">
-                      <img src="assets/img/icon/icon-plus.svg" alt="" />
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="menu_2">
-                    <div className="df">
-                      <span className="number red">4</span>{" "}
-                      <span className="img4" />
-                    </div>{" "}
-                    Нет сигнала
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="active menu_1">
-                    <div className="df">
-                      <span className="number">5</span> <span className="img" />
-                    </div>{" "}
-                    Авто в боксе
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+      <div>
         <div className="block8 clearfix">
           <div className="title">Настройки</div>
           <div className="block8-main clearfix">
-            <div className="block8-menu">
-              <ul>
-                <li>
-                  <a href="#" className="active">
-                    Основная информация
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Режим работы</a>
-                </li>
-                <li>
-                  <a href="#">Тариф G-Service</a>
-                </li>
-                <li>
-                  <a href="#">Ограничение доступа</a>
-                </li>
-                <li>
-                  <a href="#">Личные данные</a>
-                </li>
-              </ul>
-            </div>
             <div className="block8-content">
               <form action="" className="block8-form">
                 <div className="form-1">
                   <span>Полное название</span>
                   <div className="load">
                     <input type="text" value="ООО “Aqua-city”" />
-                    <img src="assets/img/loader.gif" alt="" />
+                    <img src={loaderGIF} alt="loader gif" />
                   </div>
                 </div>
                 <div className="form-1">
                   <span>Адрес</span>
                   <div className="adres">
-                    <input
-                      type="text"
-                      placeholder="г. Москва, ул. Верейская, д.2 "
-                    />
-                    <img src="assets/img/icon/icon-adres.svg" alt="" />
+                    <input type="text" placeholder="Введите адресс" />
+                    <img src={addressSVG} alt="" />
                   </div>
                 </div>
                 <div className="form-1">
@@ -286,12 +188,12 @@ class Settings extends Component {
                         >
                           <i className="icon-picture" />
                         </a>
-                        <input
+                        {/* <input
                           type="file"
                           data-role="magic-overlay"
                           data-target="#pictureBtn"
                           data-edit="insertImage"
-                        />
+                        /> */}
                       </div>
                       <div className="btn-group">
                         <a
@@ -324,12 +226,13 @@ class Settings extends Component {
               <div className="order-fixed">
                 <button className="cancel">Отмена</button>
                 <button className="save">
-                  СОХРАНИТЬ <img src="assets/img/icon/save.svg" alt="" />
+                  СОХРАНИТЬ <img src={saveSVG} alt="save icon" />
                 </button>
               </div>
             </div>
           </div>
         </div>
+        <TextEditor />
       </div>
     );
   }

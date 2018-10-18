@@ -15,6 +15,8 @@ import "./assets/css/menu.css";
 import "./assets/css/fonts.css";
 import "./assets/css/style.css";
 import "./assets/css/media.css";
+// import "../node_modules/font-awesome/css/font-awesome.css"; -- ne nujno
+
 
 const isLogged = () => {
   var data = localStorage.getItem("isLogged");
