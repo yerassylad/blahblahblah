@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./app/store";
 import App from "./app/App";
 
-import "./assets/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/bootstrap-combined.no-icons.min.css";
 // import "./assets/css/font-awesome.min.css"; // нет файлов fonts/fontawesome-webfont.eot и т.д. Из-за этого установил "font-awesome": "^4.7.0". все работает как надо
 import "../node_modules/font-awesome/css/font-awesome.min.css";
@@ -16,7 +16,6 @@ import "./assets/css/fonts.css";
 import "./assets/css/style.css";
 import "./assets/css/media.css";
 // import "../node_modules/font-awesome/css/font-awesome.css"; -- ne nujno
-
 
 const isLogged = () => {
   var data = localStorage.getItem("isLogged");

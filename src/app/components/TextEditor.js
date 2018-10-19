@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import "../../assets/css/text-editor.css";
+import {
+  Dropdown,
+  MenuItem,
+  Glyphicon,
+  Button,
+  ButtonGroup
+} from "react-bootstrap";
 
 // в darftjs имплементированы BOLD ITALIC UNDERLINE стили. Создаем кастомный стиль для зачеркнутых слов
 const StyleMap = {
@@ -54,9 +61,6 @@ const INLINE_STYLES = [
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
   { label: "Strikethrough", style: "STRIKE" },
-  { label: "Huge", style: "Huge" },
-  { label: "Normal", style: "Normal" },
-  { label: "Small", style: "Small" },
   { label: "Georgia", style: "Georgia" },
   { label: "Palatino", style: "Palatino" },
   { label: "TimesNewRoman", style: "TimesNewRoman" },
@@ -68,6 +72,42 @@ const INLINE_STYLES = [
   { label: "Tahoma", style: "Tahoma" },
   { label: "Courier", style: "Courier" }
 ];
+
+// Sizing
+const Sizing = [
+  { label: "Huge", style: "Huge" },
+  { label: "Normal", style: "Normal" },
+  { label: "Small", style: "Small" }
+];
+
+const SizingBtn = props => {
+  const onPress = () => {
+    props.onToggle(props.style);
+  };
+
+  return <MenuItem onMouseDown={onPress}>{props.label}</MenuItem>;
+};
+
+const TextSizing = props => {
+  return (
+    <div className="btn-group">
+      <Dropdown>
+        <Dropdown.Toggle>
+          <Glyphicon glyph="text-height" />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {Sizing.map(el => (
+            <SizingBtn
+              style={el.style}
+              label={el.label}
+              onToggle={props.onToggle}
+            />
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+    </div>
+  );
+};
 
 // Виды блочных стилей
 const BLOCK_STYLES = [
@@ -176,6 +216,21 @@ class TextEditor extends Component {
   render() {
     return (
       <div>
+        <ButtonGroup>
+          <Button>
+            <Glyphicon glyph="align-left" />
+          </Button>
+          <Button>
+            <Glyphicon glyph="align-center" />
+          </Button>
+          <Button>
+            <Glyphicon glyph="align-right" />
+          </Button>
+          <Button>
+            <Glyphicon glyph="align-justify" />
+          </Button>
+        </ButtonGroup>
+        <TextSizing onToggle={this.toggleInlineStyle} />
         <LineDecoratonBtns onToggle={this.toggleInlineStyle} />
         <BlockDecorationBtns onToggle={this.toggleBlockType} />
         <button onClick={this.onUndoClick.bind(this)}>Undo</button>
